@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/auth/firebase_auth_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
@@ -8,6 +9,7 @@ import '../widgets/custom_text_field.dart';
 import '../widgets/password_field.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_checkbox.dart';
+import '../routes/app_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -138,14 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _navigateToSignUp() {
-    // Implement navigation to sign up screen
-    // Navigator.pushNamed(context, '/signup');
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Navigate to Sign Up screen'),
-        backgroundColor: AppColors.orange,
-      ),
-    );
+    context.go(AppRouter.signup);
   }
 
   @override
@@ -153,103 +148,103 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-      child: SingleChildScrollView(
-      child: Column(
-      children: [
-      const AuthHeader(
-      title: 'Log In',
-      subtitle: 'Please sign in to your existing account',
-    ),
-    Padding(
-    padding: const EdgeInsets.all(24),
-    child: Form(
-    key: _formKey,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-    const SizedBox(height: 32),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const AuthHeader(
+                title: 'Log In',
+                subtitle: 'Please sign in to your existing account',
+              ),
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 32),
 
-    // Email Field
-    CustomTextField(
-    label: 'Email',
-    hintText: 'example@gmail.com',
-    controller: _emailController,
-    keyboardType: TextInputType.emailAddress,
-    validator: _validateEmail,
-    ),
+                      // Email Field
+                      CustomTextField(
+                        label: 'Email',
+                        hintText: 'example@gmail.com',
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: _validateEmail,
+                      ),
 
-    const SizedBox(height: 24),
+                      const SizedBox(height: 24),
 
-    // Password Field
-    PasswordField(
-    label: 'Password',
-    hintText: '••••••••••••',
-    controller: _passwordController,
-    validator: _validatePassword,
-    ),
+                      // Password Field
+                      PasswordField(
+                        label: 'Password',
+                        hintText: '••••••••••••',
+                        controller: _passwordController,
+                        validator: _validatePassword,
+                      ),
 
-    const SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
-    // Remember Me and Forgot Password
-    Row(
-    children: [
-    Expanded(
-    child: CustomCheckbox(
-    value: _rememberMe,
-    onChanged: (value) {
-    setState(() {
-    _rememberMe = value ?? false;
-    });
-    },
-    text: 'Remember me',
-    ),
-    ),
-    CustomButton(
-    text: 'Forgot Password',
-    onPressed: _handleForgotPassword,
-    type: ButtonType.text,
-    ),
-    ],
-    ),
+                      // Remember Me and Forgot Password
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomCheckbox(
+                              value: _rememberMe,
+                              onChanged: (value) {
+                                setState(() {
+                                  _rememberMe = value ?? false;
+                                });
+                              },
+                              text: 'Remember me',
+                            ),
+                          ),
+                          CustomButton(
+                            text: 'Forgot Password',
+                            onPressed: _handleForgotPassword,
+                            type: ButtonType.text,
+                          ),
+                        ],
+                      ),
 
-    const SizedBox(height: 32),
+                      const SizedBox(height: 32),
 
-    // Login Button
-    CustomButton(
-    text: 'LOG IN',
-    onPressed: _handleLogin,
-    isLoading: _isLoading,
-    width: double.infinity,
-    ),
+                      // Login Button
+                      CustomButton(
+                        text: 'LOG IN',
+                        onPressed: _handleLogin,
+                        isLoading: _isLoading,
+                        width: double.infinity,
+                      ),
 
-    const SizedBox(height: 32),
+                      const SizedBox(height: 32),
 
-    // Sign Up Link
-    Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Don't have an account? ",
-          style: AppTextStyles.bodyMedium.copyWith(
-            color: AppColors.secondaryText,
+                      // Sign Up Link
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account? ",
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              color: AppColors.secondaryText,
+                            ),
+                          ),
+                          CustomButton(
+                            text: 'SIGN UP',
+                            onPressed: _navigateToSignUp,
+                            type: ButtonType.text,
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 24),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        CustomButton(
-          text: 'SIGN UP',
-          onPressed: _navigateToSignUp,
-          type: ButtonType.text,
-        ),
-      ],
-    ),
-
-      const SizedBox(height: 24),
-    ],
-    ),
-    ),
-    ),
-      ],
-      ),
-      ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/auth/firebase_auth_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
@@ -7,6 +8,7 @@ import '../widgets/auth_header.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/password_field.dart';
 import '../widgets/custom_button.dart';
+import '../routes/app_router.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -94,7 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             backgroundColor: AppColors.orange,
           ),
         );
-        Navigator.pop(context);
+        context.go(AppRouter.login);
       }
     } catch (e) {
       if (mounted) {
@@ -115,7 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _navigateToLogin() {
-    Navigator.pop(context);
+    context.go(AppRouter.login);
   }
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'core/constants/app_colors.dart';
 import 'core/constants/app_text_styles.dart';
-import 'presentation/screens/login_screen.dart';
+import 'presentation/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Food Delivery',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }
