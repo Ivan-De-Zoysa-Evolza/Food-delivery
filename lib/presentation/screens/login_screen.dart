@@ -68,9 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text,
       );
 
-      // Navigate to home or dashboard screen
-      // You can implement your navigation logic here
       if (mounted) {
+        context.go(AppRouter.home);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Login successful!'),
