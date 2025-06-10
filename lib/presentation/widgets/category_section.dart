@@ -1,4 +1,3 @@
-// lib/presentation/widgets/category_section.dart
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
@@ -12,17 +11,17 @@ class CategorySection extends StatelessWidget {
       CategoryItem(
         name: 'Pizza',
         price: 'LKR 800',
-        imagePath: 'assets/images/pizza.png', // You'll add this later
+        imagePath: 'assets/images/pizza.jpg',
       ),
       CategoryItem(
         name: 'Burger',
         price: 'LKR 200',
-        imagePath: 'assets/images/burger.png', // You'll add this later
+        imagePath: 'assets/images/burger.jpg',
       ),
       CategoryItem(
-        name: 'Pizza', // This appears to be cut off in the image
+        name: 'Pizza',
         price: 'Starting',
-        imagePath: 'assets/images/pizza2.png', // You'll add this later
+        imagePath: 'assets/images/pizza2.png',
       ),
     ];
 
@@ -56,7 +55,7 @@ class CategorySection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 26),
         SizedBox(
           height: 120,
           child: ListView.separated(
@@ -118,11 +117,23 @@ class CategoryCard extends StatelessWidget {
               color: AppColors.inputBackground,
               borderRadius: BorderRadius.circular(24),
             ),
-            child: Icon(
-              Icons.fastfood,
-              color: AppColors.secondaryText,
-              size: 24,
-            ), // Placeholder for actual image
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Image.asset(
+                category.imagePath,
+                width: 48,
+                height: 48,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // Fallback to icon if image fails to load
+                  return Icon(
+                    Icons.fastfood,
+                    color: AppColors.secondaryText,
+                    size: 24,
+                  );
+                },
+              ),
+            ),
           ),
           const SizedBox(height: 8),
           Text(

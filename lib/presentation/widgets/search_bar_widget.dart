@@ -1,4 +1,3 @@
-// lib/presentation/widgets/search_bar_widget.dart
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
