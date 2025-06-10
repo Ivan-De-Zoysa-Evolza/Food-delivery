@@ -1,3 +1,4 @@
+// lib/presentation/screens/signup_screen.dart
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:go_router/go_router.dart';
@@ -126,92 +127,107 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
+          child: Stack(
             children: [
               const AuthHeader(
                 title: 'Sign Up',
                 subtitle: 'Please create a new account',
               ),
               Padding(
-                padding: const EdgeInsets.all(24),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(height: 32),
-
-                      // Name Field
-                      CustomTextField(
-                        label: 'Full Name',
-                        hintText: 'Enter your full name',
-                        controller: _nameController,
-                        validator: _validateName,
+                padding: const EdgeInsets.only(top: 200), // Adjust this value to position the form
+                child: Container(
+                  margin: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
-
-                      const SizedBox(height: 24),
-
-                      // Email Field
-                      CustomTextField(
-                        label: 'Email',
-                        hintText: 'example@gmail.com',
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: _validateEmail,
-                      ),
-
-                      const SizedBox(height: 24),
-
-                      // Password Field
-                      PasswordField(
-                        label: 'Password',
-                        hintText: '••••••••••••',
-                        controller: _passwordController,
-                        validator: _validatePassword,
-                      ),
-
-                      const SizedBox(height: 24),
-
-                      // Confirm Password Field
-                      PasswordField(
-                        label: 'Confirm Password',
-                        hintText: '••••••••••••',
-                        controller: _confirmPasswordController,
-                        validator: _validateConfirmPassword,
-                      ),
-
-                      const SizedBox(height: 32),
-
-                      // Sign Up Button
-                      CustomButton(
-                        text: 'SIGN UP',
-                        onPressed: _handleSignUp,
-                        isLoading: _isLoading,
-                        width: double.infinity,
-                      ),
-
-                      const SizedBox(height: 32),
-
-                      // Login Link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Already have an account? ",
-                            style: AppTextStyles.bodyMedium.copyWith(
-                              color: AppColors.secondaryText,
-                            ),
-                          ),
-                          CustomButton(
-                            text: 'LOG IN',
-                            onPressed: _navigateToLogin,
-                            type: ButtonType.text,
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 24),
                     ],
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const SizedBox(height: 32),
+
+                        // Name Field
+                        CustomTextField(
+                          label: 'Full Name',
+                          hintText: 'Enter your full name',
+                          controller: _nameController,
+                          validator: _validateName,
+                        ),
+
+                        const SizedBox(height: 24),
+
+                        // Email Field
+                        CustomTextField(
+                          label: 'Email',
+                          hintText: 'example@gmail.com',
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: _validateEmail,
+                        ),
+
+                        const SizedBox(height: 24),
+
+                        // Password Field
+                        PasswordField(
+                          label: 'Password',
+                          hintText: '••••••••••••',
+                          controller: _passwordController,
+                          validator: _validatePassword,
+                        ),
+
+                        const SizedBox(height: 24),
+
+                        // Confirm Password Field
+                        PasswordField(
+                          label: 'Confirm Password',
+                          hintText: '••••••••••••',
+                          controller: _confirmPasswordController,
+                          validator: _validateConfirmPassword,
+                        ),
+
+                        const SizedBox(height: 32),
+
+                        // Sign Up Button
+                        CustomButton(
+                          text: 'SIGN UP',
+                          onPressed: _handleSignUp,
+                          isLoading: _isLoading,
+                          width: double.infinity,
+                        ),
+
+                        const SizedBox(height: 32),
+
+                        // Login Link
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account? ",
+                              style: AppTextStyles.bodyMedium.copyWith(
+                                color: AppColors.secondaryText,
+                              ),
+                            ),
+                            CustomButton(
+                              text: 'LOG IN',
+                              onPressed: _navigateToLogin,
+                              type: ButtonType.text,
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 24),
+                      ],
+                    ),
                   ),
                 ),
               ),
