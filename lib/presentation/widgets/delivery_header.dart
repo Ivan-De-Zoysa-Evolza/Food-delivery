@@ -12,10 +12,19 @@ class DeliveryHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(
-              Icons.menu,
-              color: AppColors.primaryText,
-              size: 24,
+            Image.asset(
+              'assets/images/Icon.png',
+              width: 24,
+              height: 24,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                // Fallback to menu icon if image fails to load
+                return Icon(
+                  Icons.menu,
+                  color: AppColors.primaryText,
+                  size: 24,
+                );
+              },
             ),
             const SizedBox(width: 16),
             Column(

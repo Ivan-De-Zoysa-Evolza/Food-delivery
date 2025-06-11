@@ -57,7 +57,7 @@ class CategorySection extends StatelessWidget {
         ),
         const SizedBox(height: 26),
         SizedBox(
-          height: 120,
+          height: 200, // Increased to accommodate 100x100 image
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
@@ -95,10 +95,10 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: 150, // Increased to accommodate larger image
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16), // Slightly increased
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.04),
@@ -107,51 +107,66 @@ class CategoryCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: AppColors.inputBackground,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(24),
-              child: Image.asset(
-                category.imagePath,
-                width: 48,
-                height: 48,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  // Fallback to icon if image fails to load
-                  return Icon(
-                    Icons.fastfood,
-                    color: AppColors.secondaryText,
-                    size: 24,
-                  );
-                },
+      child: Padding(
+        padding: const EdgeInsets.all(12), // Added padding for better spacing
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 100, // Increased to 100x100
+              height: 100, // Increased to 100x100
+              decoration: BoxDecoration(
+                color: AppColors.inputBackground,
+                borderRadius: BorderRadius.circular(50), // Updated to match new size
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  category.imagePath,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Fallback to icon if image fails to load
+                    return Icon(
+                      Icons.fastfood,
+                      color: AppColors.secondaryText,
+                      size: 40, // Increased icon size for larger container
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            category.name,
-            style: AppTextStyles.bodyMedium.copyWith(
-              fontWeight: FontWeight.w600,
+            const SizedBox(height: 12), // Increased spacing
+            Text(
+              category.name,
+              style: AppTextStyles.bodyMedium.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis, // Prevent text overflow
+              textAlign: TextAlign.center,
             ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            'Starting',
-            style: AppTextStyles.caption,
-          ),
-          Text(
-            category.price,
-            style: AppTextStyles.caption,
-          ),
-        ],
+            const SizedBox(height: 4),
+            Text(
+              'Starting',
+              style: AppTextStyles.caption.copyWith(
+                color: AppColors.secondaryText,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              category.price,
+              style: AppTextStyles.caption.copyWith(
+                fontWeight: FontWeight.w600,
+                color: AppColors.primaryText,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis, // Prevent text overflow
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
