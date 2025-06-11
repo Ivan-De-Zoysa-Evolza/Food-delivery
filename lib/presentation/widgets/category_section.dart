@@ -20,8 +20,8 @@ class CategorySection extends StatelessWidget {
       ),
       CategoryItem(
         name: 'Pizza',
-        price: 'Starting',
-        imagePath: 'assets/images/pizza2.png',
+        price: 'LKR 300',
+        imagePath: 'assets/images/burger.jpg',
       ),
     ];
 

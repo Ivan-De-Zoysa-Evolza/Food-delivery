@@ -61,8 +61,8 @@ class DeliveryHeader extends StatelessWidget {
           ],
         ),
         Container(
-          width: 44,
-          height: 44,
+          width: 53,
+          height: 53,
           decoration: BoxDecoration(
             color: AppColors.darkBlue,
             borderRadius: BorderRadius.circular(12),
@@ -73,15 +73,15 @@ class DeliveryHeader extends StatelessWidget {
                 child: Icon(
                   Icons.shopping_bag_outlined,
                   color: Colors.white,
-                  size: 20,
+                  size: 40,
                 ),
               ),
               Positioned(
-                top: 8,
-                right: 8,
+                top: 9,
+                right: 9,
                 child: Container(
-                  width: 16,
-                  height: 16,
+                  width: 20,
+                  height: 20,
                   decoration: BoxDecoration(
                     color: AppColors.orange,
                     borderRadius: BorderRadius.circular(8),
@@ -91,7 +91,7 @@ class DeliveryHeader extends StatelessWidget {
                       '2',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 10,
+                        fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
