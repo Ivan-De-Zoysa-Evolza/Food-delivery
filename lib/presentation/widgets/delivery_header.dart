@@ -12,19 +12,28 @@ class DeliveryHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            Image.asset(
-              'assets/images/Icon.png',
-              width: 24,
-              height: 24,
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) {
-                // Fallback to menu icon if image fails to load
-                return Icon(
-                  Icons.menu,
-                  color: AppColors.primaryText,
-                  size: 24,
-                );
+            GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
               },
+              child: Container(
+                width: 24,
+                height: 24,
+                child: Image.asset(
+                  'assets/images/Icon.png',
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Fallback to menu icon if image fails to load
+                    return Icon(
+                      Icons.menu,
+                      color: AppColors.primaryText,
+                      size: 24,
+                    );
+                  },
+                ),
+              ),
             ),
             const SizedBox(width: 16),
             Column(
@@ -61,8 +70,8 @@ class DeliveryHeader extends StatelessWidget {
           ],
         ),
         Container(
-          width: 53,
-          height: 53,
+          width: 54,
+          height: 54,
           decoration: BoxDecoration(
             color: AppColors.darkBlue,
             borderRadius: BorderRadius.circular(12),
@@ -73,7 +82,7 @@ class DeliveryHeader extends StatelessWidget {
                 child: Icon(
                   Icons.shopping_bag_outlined,
                   color: Colors.white,
-                  size: 40,
+                  size: 30,
                 ),
               ),
               Positioned(
@@ -91,7 +100,7 @@ class DeliveryHeader extends StatelessWidget {
                       '2',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -3,6 +3,7 @@ import '../widgets/delivery_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/category_section.dart';
 import '../widgets/restaurant_section.dart';
+import '../widgets/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const AppDrawer(), // Add the drawer here
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
