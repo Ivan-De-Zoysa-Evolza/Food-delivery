@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_text_styles.dart';
-import '../../data/models/restaurant_model.dart';
+import '../../data/models/restaurant_model/restaurant_model.dart';
 
 class RestaurantSection extends StatelessWidget {
   final List<RestaurantModel>? restaurants;

@@ -1,6 +1,6 @@
 import 'package:food_delivery/domain/entity/food/food_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:food_delivery/data/models/size_model.dart';
+import 'package:food_delivery/data/models/size_model/size_model.dart';
 
 part 'food_model.g.dart';
 
