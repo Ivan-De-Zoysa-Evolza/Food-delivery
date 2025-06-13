@@ -1,37 +1,9 @@
-import 'package:equatable/equatable.dart';
+import 'package:food_delivery/domain/entity/restaurant_entity/restaurant_entity.dart';
 
-class DeleteRestaurantEntity extends Equatable {
-  final String? id;
-  final String? name;
-  final bool? isActive;
-  final bool? deleted;
-  final bool? success;
-  final String? message;
-  final DateTime? deletedAt;
-  final DateTime? updatedAt;
+class DeleteRestaurantEntity {
+  final RestaurantEntity restaurant;
 
   const DeleteRestaurantEntity({
-    this.id,
-    this.name,
-    this.isActive,
-    this.deleted,
-    this.success,
-    this.message,
-    this.deletedAt,
-    this.updatedAt,
+    required this.restaurant,
   });
-
-  @override
-  List<Object?> get props {
-    return [
-      id,
-      name,
-      isActive,
-      deleted,
-      success,
-      message,
-      deletedAt,
-      updatedAt,
-    ];
-  }
 }

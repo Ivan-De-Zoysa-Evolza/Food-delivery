@@ -1,3 +1,4 @@
+import 'package:food_delivery/data/models/restaurant_model/restaurant_model.dart';
 import 'package:food_delivery/domain/entity/restaurant_entity/get_all_restaurants_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,35 +6,16 @@ part 'get_all_restaurants_model.g.dart';
 
 @JsonSerializable()
 class GetAllRestaurantsModel extends GetAllRestaurantsEntity {
+  @JsonKey(name: 'data')
+  final List<RestaurantModel> restaurantModels;
+
   const GetAllRestaurantsModel({
-    super.id,
-    super.name,
-    super.description,
-    super.address,
-    super.phone,
-    super.email,
-    super.openingTime,
-    super.closingTime,
-    super.rating,
-    super.ratingCount,
-    super.avgPrepareTime,
-    super.deliveryCost,
-    super.freeDelivery,
-    super.minOrderAmount,
-    super.cuisine,
-    super.image,
-    super.isActive,
-    super.isOpen,
-    super.createdAt,
-    super.updatedAt,
-    super.page,
-    super.limit,
-    super.sort,
-    super.search,
-    super.category,
-    super.totalCount,
-    super.totalPages,
-  });
+    required this.restaurantModels,
+    required super.totalCount,
+    required super.totalPages,
+    required super.currentPage,
+    required super.limit,
+  }) : super(restaurants: restaurantModels);
 
   factory GetAllRestaurantsModel.fromJson(Map<String, dynamic> json) =>
       _$GetAllRestaurantsModelFromJson(json);
